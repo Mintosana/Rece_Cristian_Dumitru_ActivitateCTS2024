@@ -37,53 +37,55 @@ public class Pacient {
         this.areHalatInterior = areHalatInterior;
     }
 
-    public class PacientBuilder implements AbstractBuilder {
+    @java.lang.Override
+    public java.lang.String toString() {
+        final java.lang.StringBuilder sb = new java.lang.StringBuilder("Pacient{");
+        sb.append("nume=").append(nume);
+        sb.append(", arePatRabatabil=").append(arePatRabatabil);
+        sb.append(", areMicDejunInclus=").append(areMicDejunInclus);
+        sb.append(", arePapuciCamera=").append(arePapuciCamera);
+        sb.append(", areHalatInterior=").append(areHalatInterior);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public static class PacientBuilder implements AbstractBuilder {
         private String nume;
         private boolean arePatRabatabil;
         private boolean areMicDejunInclus;
         private boolean arePapuciCamera;
         private boolean areHalatInterior;
 
+        public PacientBuilder(String nume){this.nume = nume;}
+
         @Override
         public AbstractBuilder adaugaPatRabatabil(boolean arePatRabatabil) {
             this.arePatRabatabil = arePatRabatabil;
-            return null;
+            return this;
         }
 
         @Override
         public AbstractBuilder adaugaMicDejun(boolean areMicDejunInclus) {
             this.areMicDejunInclus = areMicDejunInclus;
-            return null;
+            return this;
         }
 
         @Override
         public AbstractBuilder adaugaPapuciCamera(boolean arePapuciCamera) {
             this.arePapuciCamera = arePapuciCamera;
-            return null;
+            return this;
         }
 
         @Override
         public AbstractBuilder adaugaHalatInterior(boolean areHalatInterior) {
             this.areHalatInterior = areHalatInterior;
-            return null;
+            return this;
         }
 
         @Override
         public Pacient build() {
-
             return new Pacient(this.nume,this.arePatRabatabil,this.areMicDejunInclus,this.arePapuciCamera,this.areHalatInterior);
         }
 
-    }
-
-    @Override
-    public String toString() {
-        return "Pacient{" +
-                "nume='" + nume + '\'' +
-                ", arePatRabatabil=" + arePatRabatabil +
-                ", areMicDejunInclus=" + areMicDejunInclus +
-                ", arePapuciCamera=" + arePapuciCamera +
-                ", areHalatInterior=" + areHalatInterior +
-                '}';
     }
 }
